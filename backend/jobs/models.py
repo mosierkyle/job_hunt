@@ -19,13 +19,13 @@ class Job(models.Model):
     status = models.CharField(max_length=12, choices=status_choices, default='Waiting')
 
     def __str__(self):
-        return f"{self.title} at {self.comanpy}"
+        return f"{self.title} at {self.company}"
 
 class Interview(models.Model):
     job = models.ForeignKey(Job, related_name='interviews', on_delete=models.CASCADE)
     type = models.CharField(max_length=200)
     round = models.CharField(max_length=50)
-    interviewer = modelsCharField(max_length=200,  blank=True)
+    interviewer = models.CharField(max_length=200,  blank=True)
     status_choices = [
         ('Upcoming', 'Upcoming'),
         ('Past', 'Past'),
