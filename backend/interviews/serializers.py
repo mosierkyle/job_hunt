@@ -8,7 +8,7 @@ class InterviewSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class InterviewSerializerDetails(InterviewSerializer):
+class InterviewDetailsSerializer(InterviewSerializer):
     job = serializers.SerializerMethodField()
 
     class Meta(InterviewSerializer.Meta):

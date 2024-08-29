@@ -39,7 +39,7 @@ class JobDetails(APIView):
     
     def get(self, request, pk):
         job = self.get_job_object(pk)
-        serializer = JobDetailSerializer()
+        serializer = JobDetailSerializer(job)
         return Response(serializer.data)
 
     def put(self, request, pk):
