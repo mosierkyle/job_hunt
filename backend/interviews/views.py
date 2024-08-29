@@ -5,10 +5,14 @@ from rest_framework.response import Response
 from .models import Interview
 from .serializers import InterviewSerializer, InterviewDetailsSerializer
 from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import generics, filters
+from rest_framework.permissions import IsAuthenticated
 
 # Create your views here.
 
 class InterviewList(APIView):
+    permission_classes = [IsAuthenticated]
+
     filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
     filterset_fiels = ['round', 'type', 'status']
     search_fields = ['interviewer']
@@ -30,6 +34,8 @@ class InterviewList(APIView):
             return Response(request.data, status=status.HTTP_400_BAD_REQUEST)
 
 class InterviewDetails(APIView):
+    permission_classes = [IsAuthenticated]
+
     def get_interview_object(self, pk):
         try:
             return Interview.objects.get(pk=pk)
@@ -47,7 +53,7 @@ class InterviewDetails(APIView):
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
-        return Response(erializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
     def patch(self, request, pk):
         interview = self.get_interview_object(pk)
@@ -55,7 +61,7 @@ class InterviewDetails(APIView):
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
-        return Response(erializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
     def delete(self, pk):
        interview = self.get_interview_object(pk)

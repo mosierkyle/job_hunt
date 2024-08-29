@@ -5,10 +5,14 @@ from rest_framework.response import Response
 from .models import Job
 from .serializers import JobSerializer, JobDetailSerializer
 from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import generics, filters
+from rest_framework.permissions import IsAuthenticated
 
 
 # Create your views here.
 class JobList(APIView):
+    permission_classes = [IsAuthenticated]
+
     filter_backends = [DjangoFilterBackend, filters.SearchFilter, filters.OrderingFilter]
     filterset_fields = ['status', 'company', 'title', 'applied']
     search_fields = ['company', 'title', 'description']
@@ -31,6 +35,8 @@ class JobList(APIView):
 
 
 class JobDetails(APIView):
+    permission_classes = [IsAuthenticated]
+
     def get_job_object(self, pk):
         try:
             return Job.objects.get(pk=pk)
@@ -49,7 +55,7 @@ class JobDetails(APIView):
             serializer.save()
             return Response(serializer.data)
         else:
-            return Response(erializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
     def patch(self,request, pk):
         job = self.get_job_object(pk)
@@ -58,9 +64,9 @@ class JobDetails(APIView):
             serializer.save()
             return Response(serializer.data)
         else:
-            return Response(erializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def patch(self, request, pk):
+    def delete(self, request, pk):
         job = self.get_job_object(pk)
         job.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)

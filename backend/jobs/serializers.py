@@ -1,11 +1,23 @@
 from rest_framework import serializers
-from .models import *
-from interviews.serializers import InterviewSerializer
+from .models import Job
+
 
 class JobSerializer(serializers.ModelSerializer):
     class Meta:
         model = Job
-        fields = '__all__'  #['id, title, company, link, applied, pay, date_applied, description, status']
+        fields = fields = [
+            'id',
+            'user',
+            'title',
+            'company',
+            'link',
+            'applied',
+            'pay',
+            'date_applied',
+            'description',
+            'status',
+            'notes'
+        ]
 
 class JobDetailSerializer(JobSerializer):
     interviews = serializers.SerializerMethodField()
@@ -14,4 +26,5 @@ class JobDetailSerializer(JobSerializer):
         fields = JobSerializer.Meta.fields + ['interviews']
 
     def get_interviews(self, obj):
+        from interviews.serializers import InterviewSerializer
         return InterviewSerializer(obj.interviews.all(), many=True).data

@@ -1,5 +1,5 @@
 from django.urls import path, include
-from views import InterviewList, InterviewDetails
+from .views import InterviewList, InterviewDetails
 
 urlpatterns = [
     path('interviews/', InterviewList.as_view(), name='interview-list'),
