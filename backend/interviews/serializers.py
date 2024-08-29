@@ -16,5 +16,3 @@ class InterviewSerializerDetails(InterviewSerializer):
 
     def get_job(self, obj):
         return JobDetailSerializer(obj.job).data
-
-

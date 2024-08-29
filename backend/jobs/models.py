@@ -9,7 +9,7 @@ class Job(models.Model):
     company = models.CharField(max_length=200)
     link = models.URLField(null=True, blank=True)
     applied = models.BooleanField(default=False)
-    pay = models.CharField(max_length=200)
+    pay = models.IntegerField(null=True, blank=True)
     date_applied = models.DateField(null=True, blank=True)
     description = models.TextField()
     status_choices = [
