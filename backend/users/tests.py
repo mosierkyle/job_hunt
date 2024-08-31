@@ -6,17 +6,14 @@ from django.urls import reverse, resolve
 import os
 
 # Create your tests here.
-
-load_dotenv('../../.env')
+dotenv_path = os.path.join(os.path.dirname(__file__), '..', '..', '.env')
+load_dotenv(dotenv_path=dotenv_path)
 
 
 class APItests(APITestCase):
     def setUp(self):
-        # self.email = os.getenv('TEST_USER_EMAIL')
-        # self.password = os.getenv('TEST_USER_PASSWORD')
-        self.email = "example@gmail.com"
-        self.password = "SecurePassword123!"
-        # self.user = CustomerUser.objects.get(email=self.email)
+        self.email = os.getenv('TEST_USER_EMAIL')
+        self.password = os.getenv('TEST_USER_PASSWORD')
         self.user = CustomerUser.objects.create_user(
             email=self.email,
             password=self.password,
