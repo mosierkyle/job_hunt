@@ -50,7 +50,7 @@ class JobDetail(APIView):
 
     def put(self, request, pk):
         job = self.get_job_object(pk)
-        serializer = JobDetailSerializer(data=request.data)
+        serializer = JobDetailSerializer(job, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)

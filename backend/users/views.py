@@ -27,15 +27,14 @@ class CustomUserDetail(APIView):
         return Response(serializer.data)
     
     def put(self, request):
-        serializer = CustomUserSerializer(request.user)
+        serializer = CustomUserUpdateSerializer(request.user, data=request.data)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
     
     def patch(self, request):
-        serializer = CustomUserSerializer(request.user)
-        return Response(serializer.data, partial=True)
+        serializer = CustomUserUpdateSerializer(request.user, data=request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)

@@ -35,6 +35,6 @@ urlpatterns = [
     path('api/jobs/', JobList.as_view(), name='job-list'),
     path('api/jobs/<int:pk>/', JobDetail.as_view(), name='job-detail'),
     path('api/register/',CustomUserRegister.as_view(), name='user-register'),
-    path('api/user/<int:pk>',CustomUserDetail.as_view(), name='user-detail')
+    path('api/user/',CustomUserDetail.as_view(), name='user-detail')
 ]
 

@@ -24,6 +24,6 @@ class CustomUserSerializer(serializers.ModelSerializer):
 class CustomUserUpdateSerializer(serializers.ModelSerializer):
      class Meta:
         model = CustomerUser
-        fields = ['id', 'email', 'password']
+        fields = ['last_name', 'first_name', 'email']
        
 
