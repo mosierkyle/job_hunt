@@ -26,7 +26,7 @@ class JobList(APIView):
         return Response(serializer.data)
 
     def post(self, request):
-        serializer = JobSerializer(data=request.data)
+        serializer = JobSerializer(data=request.data, context={'request': request})
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -34,7 +34,7 @@ class JobList(APIView):
             return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-class JobDetails(APIView):
+class JobDetail(APIView):
     permission_classes = [IsAuthenticated]
 
     def get_job_object(self, pk):

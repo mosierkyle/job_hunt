@@ -7,7 +7,6 @@ class JobSerializer(serializers.ModelSerializer):
         model = Job
         fields = fields = [
             'id',
-            'user',
             'title',
             'company',
             'link',
@@ -18,6 +17,11 @@ class JobSerializer(serializers.ModelSerializer):
             'status',
             'notes'
         ]
+    
+    def create(self, validated_data):
+        user = self.context.get('request').user
+        validated_data['user'] = user
+        return Job.objects.create( **validated_data)
 
 class JobDetailSerializer(JobSerializer):
     interviews = serializers.SerializerMethodField()

@@ -6,7 +6,6 @@ class InterviewSerializer(serializers.ModelSerializer):
         model = Interview
         fields = [
             'id',
-            'user',
             'job',
             'type',
             'round',
@@ -17,7 +16,11 @@ class InterviewSerializer(serializers.ModelSerializer):
             'final_questions',
             'notes'
         ]
-
+    
+    def create(self, validated_data):
+        user = self.context.get('request').user
+        validated_data['user'] = user
+        return Interview.objects.create( **validated_data)
 
 
 class InterviewDetailsSerializer(InterviewSerializer):

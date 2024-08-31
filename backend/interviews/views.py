@@ -26,14 +26,14 @@ class InterviewList(APIView):
         return Response(serializer.data)
 
     def post(self, request):
-        serializer = InterviewSerializer(request.data)
+        serializer = InterviewSerializer(data=request.data, context={'request': request})
         if serializer.is_valid():
             serializer.save()
             return Response(request.data, status=status.HTTP_201_CREATED)
         else:
             return Response(request.data, status=status.HTTP_400_BAD_REQUEST)
 
-class InterviewDetails(APIView):
+class InterviewDetail(APIView):
     permission_classes = [IsAuthenticated]
 
     def get_interview_object(self, pk):

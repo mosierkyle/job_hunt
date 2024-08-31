@@ -1,10 +1,10 @@
 from django.db import models
-from django.contrib.auth.models import User
+from users.models import CustomerUser
 
 # Create your models here.
 
 class Job(models.Model):
-    user = models.ForeignKey(User, related_name='jobs', on_delete=models.CASCADE)
+    user = models.ForeignKey(CustomerUser, related_name='jobs', on_delete=models.CASCADE)
     title = models.CharField(max_length=200)
     company = models.CharField(max_length=200)
     link = models.URLField(null=True, blank=True)
