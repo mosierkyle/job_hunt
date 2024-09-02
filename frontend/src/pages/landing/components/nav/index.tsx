@@ -1,35 +1,46 @@
 import React from 'react';
 import styles from './page.module.css';
+import { ActiveSection } from '../../../../types/global';
+import { Link } from 'react-scroll';
 
-const NavBar: React.FC = () => {
-  const handleClick = (): void => {
-    console.log('nav button clicked');
-  };
+interface NavBarProps {
+  activeSection: ActiveSection;
+}
+
+const NavBar: React.FC<NavBarProps> = ({ activeSection }) => {
+  const sections = ['Features', 'About', 'Blog', 'Support'];
 
   return (
-    <div className={styles.nav}>
+    <nav className={styles.nav}>
       <div className={styles.logo}>
-        <p>JobHunt</p>
+        <Link to="Hero" smooth={true} duration={500}>
+          JobHunt
+        </Link>
       </div>
-      <div className={styles.links}>
-        <div onClick={() => handleClick()} className={styles.link}>
-          Features
-        </div>
-        <div onClick={() => handleClick()} className={styles.link}>
-          Pricing
-        </div>
-        <div onClick={() => handleClick()} className={styles.link}>
-          Blog
-        </div>
-        <div onClick={() => handleClick()} className={styles.link}>
-          Careers
-        </div>
-        <div onClick={() => handleClick()} className={styles.link}>
-          Support
-        </div>
+      <ul className={styles.links}>
+        {sections.map((section) => {
+          return (
+            <li key={section} className={styles.link}>
+              <Link
+                to={section}
+                smooth={true}
+                duration={500}
+                style={{
+                  textDecoration: activeSection === section ? 'underline' : 'none',
+                  cursor: 'pointer',
+                }}
+              >
+                {section}
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
+      <div className={styles.user}>
+        <div>Login</div>
+        <div>Sign Up</div>
       </div>
-      <div className={styles.user}></div>
-    </div>
+    </nav>
   );
 };
 
