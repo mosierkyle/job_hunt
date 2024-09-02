@@ -1,7 +1,10 @@
-const Landing = () => {
+import React from 'react';
+import NavBar from './components/nav';
+
+const Landing: React.FC = () => {
   return (
     <div>
-      <p>Hello</p>
+      <NavBar></NavBar>
     </div>
   );
 };
