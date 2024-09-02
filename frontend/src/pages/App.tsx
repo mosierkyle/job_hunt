@@ -1,15 +1,15 @@
 import React from 'react';
-import { Routes, Route } from 'react-router-dom';
+import NavBar from './landing/components/nav';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import Landing from './landing';
+import '../global.css';
 
-const App: React.FC = () => {
+function App() {
   return (
-    <div>
-      <Routes>
-        <Route path="/" element={<Landing />}></Route>
-      </Routes>
+    <div className="App">
+      <Landing></Landing>
     </div>
   );
-};
+}
 
 export default App;
