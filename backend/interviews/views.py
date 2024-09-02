@@ -57,13 +57,13 @@ class InterviewDetail(APIView):
     
     def patch(self, request, pk):
         interview = self.get_interview_object(pk)
-        serializer = InterviewDetailsSerializer(intwerview, request.data, partial=True)
+        serializer = InterviewDetailsSerializer(interview, request.data, partial=True)
         if serializer.is_valid():
             serializer.save()
             return Response(serializer.data)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-    def delete(self, pk):
+    def delete(self,request, pk):
        interview = self.get_interview_object(pk)
        interview.delete()
        return Response(status=status.HTTP_204_NO_CONTENT)
