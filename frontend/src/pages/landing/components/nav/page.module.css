@@ -8,6 +8,7 @@
   top: 0;
   background-color: #ffff;
   z-index: 999;
+  height: 56px;
 }
 
 .links {
@@ -15,6 +16,22 @@
   align-items: center;
   gap: 25px;
   list-style: none;
+}
+
+.link {
+  position: relative;
+  cursor: pointer;
+  width: fit-content;
+}
+
+.activeLink {
+  content: '';
+  background: #9d34da;
+  width: 30px;
+  height: 2px;
+  position: absolute;
+  bottom: -4px;
+  left: 0;
 }
 
 .user {
