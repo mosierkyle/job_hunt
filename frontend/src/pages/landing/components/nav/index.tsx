@@ -5,15 +5,16 @@ import { Link } from 'react-scroll';
 
 interface NavBarProps {
   activeSection: ActiveSection;
+  onNavClick: (section: ActiveSection) => void;
 }
 
-const NavBar: React.FC<NavBarProps> = ({ activeSection }) => {
-  const sections = ['Features', 'About', 'Blog', 'Support'];
+const NavBar: React.FC<NavBarProps> = ({ activeSection, onNavClick }) => {
+  const sections: ActiveSection[] = ['Features', 'About', 'Blog', 'Support'];
 
   return (
     <nav className={styles.nav}>
       <div className={styles.logo}>
-        <Link to="Hero" smooth={true} duration={500}>
+        <Link className={styles.logoText} to="Hero" smooth={true} duration={500}>
           JobHunt
         </Link>
       </div>
@@ -21,24 +22,23 @@ const NavBar: React.FC<NavBarProps> = ({ activeSection }) => {
         {sections.map((section) => {
           return (
             <li key={section} className={styles.link}>
-              <Link
-                to={section}
-                smooth={true}
-                duration={500}
+              <button
                 style={{
-                  textDecoration: activeSection === section ? 'underline' : 'none',
-                  cursor: 'pointer',
+                  backgroundColor: activeSection === section ? '#f7f6f3' : '#fff',
                 }}
+                className={styles.linkButton}
+                onClick={() => onNavClick(section)}
               >
                 {section}
-              </Link>
+                {/* {activeSection === section && <div className={styles.activeLink}></div>} */}
+              </button>
             </li>
           );
         })}
       </ul>
       <div className={styles.user}>
-        <div>Login</div>
-        <div>Sign Up</div>
+        <button className={styles.login}>Log in</button>
+        <button className={styles.signup}>Sign Up</button>
       </div>
     </nav>
   );

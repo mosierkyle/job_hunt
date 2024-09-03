@@ -4,7 +4,7 @@ import styles from './page.module.css';
 const About: React.FC = () => {
   return (
     <div className={styles.about}>
-      <p>About Section</p>
+      <h3 className={styles.heading}>About</h3>
     </div>
   );
 };
