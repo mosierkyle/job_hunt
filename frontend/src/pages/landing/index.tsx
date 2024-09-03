@@ -8,6 +8,7 @@ import Support from './components/support';
 import { Element } from 'react-scroll';
 import { ActiveSection } from '../../types/global';
 import { scrollToSection } from './utils/scrolling';
+import Footer from './components/footer';
 
 const Landing: React.FC = () => {
   const [activeSection, setActiveSection] = useState<ActiveSection>('Hero');
@@ -59,6 +60,7 @@ const Landing: React.FC = () => {
       <Element name="Support" id="Support">
         <Support />
       </Element>
+      <Footer />
     </div>
   );
 };

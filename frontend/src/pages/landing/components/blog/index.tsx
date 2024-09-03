@@ -4,7 +4,7 @@ import styles from './page.module.css';
 const Blog: React.FC = () => {
   return (
     <div className={styles.blog}>
-      <p>Blog Section</p>
+      <h3 className={styles.heading}>Blog</h3>
     </div>
   );
 };

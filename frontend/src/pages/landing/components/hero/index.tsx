@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './page.module.css';
 import Button from '../button';
 import useTypingAnimation from '../../../../hooks/useTypingAnimation';
-import hero1 from './hero1.jpg';
+import hero1 from '../../../../files/hero1.jpg';
 
 const Hero: React.FC = () => {
   const fullText = 'ACHIEVE YOUR CAREER GOALS.';

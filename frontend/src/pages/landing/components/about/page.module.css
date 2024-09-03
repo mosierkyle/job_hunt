@@ -1,4 +1,17 @@
 .about {
   height: calc(100vh - 56px);
+  max-width: 1250px;
   width: 100vw;
+  padding: 0 8%;
+  margin: auto;
+}
+
+.heading {
+  font-size: 18px;
+  background-color: #f7f6f3;
+  padding: 10px 20px 12px;
+  border-radius: 8px;
+  width: fit-content;
+  font-weight: 400;
+  margin: 0;
 }

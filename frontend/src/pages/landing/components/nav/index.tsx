@@ -22,9 +22,15 @@ const NavBar: React.FC<NavBarProps> = ({ activeSection, onNavClick }) => {
         {sections.map((section) => {
           return (
             <li key={section} className={styles.link}>
-              <button className={styles.linkButton} onClick={() => onNavClick(section)}>
+              <button
+                style={{
+                  backgroundColor: activeSection === section ? '#f7f6f3' : '#fff',
+                }}
+                className={styles.linkButton}
+                onClick={() => onNavClick(section)}
+              >
                 {section}
-                {activeSection === section && <div className={styles.activeLink}></div>}
+                {/* {activeSection === section && <div className={styles.activeLink}></div>} */}
               </button>
             </li>
           );

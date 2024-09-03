@@ -4,7 +4,7 @@ import styles from './page.module.css';
 const Support: React.FC = () => {
   return (
     <div className={styles.support}>
-      <p>Support Section</p>
+      <h3 className={styles.heading}>Support</h3>
     </div>
   );
 };
