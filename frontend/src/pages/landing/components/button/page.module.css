@@ -1,9 +1,10 @@
 .button {
-  padding: 10px 25px;
+  padding: 10px 20px 12px;
   background-color: #000;
   color: #fff;
-  border-radius: 12.5px;
+  border-radius: 8px;
   cursor: pointer;
+  border: none;
 }
 
 .button:hover {

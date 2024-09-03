@@ -2,19 +2,19 @@ import React from 'react';
 import styles from './page.module.css';
 import { ActiveSection } from '../../../../types/global';
 import { Link } from 'react-scroll';
-import Button from '../button';
 
 interface NavBarProps {
   activeSection: ActiveSection;
+  onNavClick: (section: ActiveSection) => void;
 }
 
-const NavBar: React.FC<NavBarProps> = ({ activeSection }) => {
-  const sections = ['Features', 'About', 'Blog', 'Support'];
+const NavBar: React.FC<NavBarProps> = ({ activeSection, onNavClick }) => {
+  const sections: ActiveSection[] = ['Features', 'About', 'Blog', 'Support'];
 
   return (
     <nav className={styles.nav}>
       <div className={styles.logo}>
-        <Link to="Hero" smooth={true} duration={500}>
+        <Link className={styles.logoText} to="Hero" smooth={true} duration={500}>
           JobHunt
         </Link>
       </div>
@@ -22,17 +22,17 @@ const NavBar: React.FC<NavBarProps> = ({ activeSection }) => {
         {sections.map((section) => {
           return (
             <li key={section} className={styles.link}>
-              <Link to={section} smooth={true} duration={500}>
+              <button className={styles.linkButton} onClick={() => onNavClick(section)}>
                 {section}
                 {activeSection === section && <div className={styles.activeLink}></div>}
-              </Link>
+              </button>
             </li>
           );
         })}
       </ul>
       <div className={styles.user}>
-        <div>Log in</div>
-        <Button text="Sign Up" fontSize={12}></Button>
+        <button className={styles.login}>Log in</button>
+        <button className={styles.signup}>Sign Up</button>
       </div>
     </nav>
   );

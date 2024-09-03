@@ -1,1 +1,1 @@
-export type ActiveSection = 'About' | 'Hero' | 'Features';
+export type ActiveSection = 'About' | 'Hero' | 'Features' | 'Blog' | 'Support';

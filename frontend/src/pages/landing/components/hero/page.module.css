@@ -1,5 +1,5 @@
 .hero {
-  height: calc(100vh);
+  height: calc(100vh + 100px);
   width: calc(100vw - 10px);
   display: flex;
   flex-direction: column;
@@ -11,9 +11,10 @@
 
 .heroText {
   font-size: 65px;
-  width: 50%;
   text-align: center;
   margin: 0;
+  width: 50%;
+  position: relative;
 }
 
 .heroSecondaryText {
@@ -23,4 +24,27 @@
   font-weight: 200;
   line-height: 25px;
   margin: 0;
+}
+
+.cursor {
+  display: inline-block;
+  width: 1px;
+  font-weight: 100;
+  font-size: 50px;
+  bottom: 2px;
+  position: absolute;
+  bottom: 12px;
+}
+
+.imgDiv {
+  height: 400px;
+  width: 1000px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+}
+
+.img {
+  object-fit: cover;
+  object-position: center;
 }

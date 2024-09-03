@@ -1,4 +1,4 @@
 Main: #FFFFFF
-Secondary: #454B4E / #F7F6F3
+Secondary: #F7F6F3
 Tertiary: #000000
 Accent: #9d34da

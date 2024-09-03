@@ -14,14 +14,26 @@
 .links {
   display: flex;
   align-items: center;
-  gap: 25px;
+  gap: 30px;
   list-style: none;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  width: 300px;
 }
 
 .link {
   position: relative;
   cursor: pointer;
   width: fit-content;
+}
+
+.linkButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 0;
 }
 
 .activeLink {
@@ -37,11 +49,57 @@
 .user {
   display: flex;
   align-items: center;
-  gap: 25px;
+  width: fit-content;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.signup {
+  padding: 10px 20px 12px;
+  background-color: #000;
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  font-size: 16px;
+}
+
+.signup:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.signup:active {
+  background-color: #000;
+}
+
+.login {
+  font-weight: 400;
+  padding: 10px 20px 12px;
+  color: #000;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  font-size: 16px;
+  background-color: #fff;
+}
+
+.login:hover {
+  background-color: #f7f6f3;
+}
+
+.login:active {
+  background-color: #fff;
 }
 
 .logo {
   display: flex;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
+  width: 158px;
+  cursor: pointer;
+}
+
+.logoText {
+  font-size: 24px;
+  font-weight: 600;
 }
