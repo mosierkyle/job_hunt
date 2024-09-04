@@ -1,18 +1,19 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Landing from './landing';
-import Home from './home';
+import Dashboard from './dashboard';
 import '../global.css';
+import Login from './login';
+import Registration from './register';
 
 function App() {
   return (
     <Router>
-      <div className="App">
-        <Landing></Landing>
-      </div>
       <Routes>
         <Route path="/" element={<Landing />} />
-        <Route path="/home" element={<Home />} />
+        <Route path="/home" element={<Dashboard />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Registration />} />
       </Routes>
     </Router>
   );
