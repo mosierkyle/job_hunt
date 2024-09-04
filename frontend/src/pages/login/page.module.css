@@ -1,0 +1,120 @@
+.formPage {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 400px;
+  gap: 35px;
+  background-color: #fff;
+}
+
+.formHeading {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.formTitle {
+  text-align: center;
+  font-size: 30px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.9);
+  margin: 0;
+}
+
+.subHeader {
+  font-size: 18px;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+  color: rgb(133, 133, 133);
+  font-weight: 400;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.label {
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.9);
+}
+
+.input {
+  padding: 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+.input::placeholder {
+  color: rgb(133, 133, 133);
+  height: 14px;
+}
+
+.input:focus {
+  border-color: #9d34dacc;
+  box-shadow: 0 0 0 3px #9d34da3e;
+}
+
+.input:focus-visible {
+  border-color: #9d34dacc;
+  box-shadow: 0 0 0 3px #9d34da3e;
+  outline: none;
+}
+
+.input:hover {
+  box-shadow: 0 0 0 3px #9d34da3e;
+}
+
+.error {
+  color: #cd2f2fcc;
+}
+
+.forgot {
+  color: #000;
+  display: flex;
+  justify-content: end;
+  font-size: 15px;
+  cursor: pointer;
+}
+
+.already {
+  text-align: center;
+  color: rgb(133, 133, 133);
+}
+
+.alreadyLink {
+  color: #000;
+  cursor: pointer;
+}
+
+.submitButton {
+  border: none;
+  background-color: #000;
+  color: #fff;
+  border-radius: 8px;
+  padding: 13px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.submitButton:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.submitButton:active {
+  background-color: #000;
+}

@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './page.module.css';
 import { ActiveSection } from '../../../../types/global';
 import { Link } from 'react-scroll';
+import { useNavigate } from 'react-router-dom';
 
 interface NavBarProps {
   activeSection: ActiveSection;
@@ -10,6 +11,11 @@ interface NavBarProps {
 
 const NavBar: React.FC<NavBarProps> = ({ activeSection, onNavClick }) => {
   const sections: ActiveSection[] = ['Features', 'About', 'Blog', 'Support'];
+  const navigate = useNavigate();
+
+  const handleNavigate = (location: string) => {
+    navigate(location);
+  };
 
   return (
     <nav className={styles.nav}>
@@ -37,8 +43,12 @@ const NavBar: React.FC<NavBarProps> = ({ activeSection, onNavClick }) => {
         })}
       </ul>
       <div className={styles.user}>
-        <button className={styles.login}>Log in</button>
-        <button className={styles.signup}>Sign Up</button>
+        <button onClick={() => handleNavigate('login')} className={styles.login}>
+          Log in
+        </button>
+        <button onClick={() => handleNavigate('register')} className={styles.signup}>
+          Sign Up
+        </button>
       </div>
     </nav>
   );
