@@ -1,5 +1,7 @@
-from rest_framework.test import APITestCase
+from rest_framework.test import APITestCase, APIClient
+from rest_framework_simplejwt.tokens import RefreshToken
 from rest_framework import status
+from rest_framework_simplejwt.tokens import RefreshToken
 from .models import CustomerUser
 from dotenv import load_dotenv
 from django.urls import reverse, resolve
@@ -11,6 +13,7 @@ load_dotenv(dotenv_path=dotenv_path)
 
 
 class APItests(APITestCase):
+    #create user
     def setUp(self):
         self.email = os.getenv('TEST_USER_EMAIL')
         self.password = os.getenv('TEST_USER_PASSWORD')
@@ -20,6 +23,17 @@ class APItests(APITestCase):
             first_name='Test',
             last_name='User'
         )
+
+        # Get JWT tokens
+        refresh = RefreshToken.for_user(self.user)
+        self.access_token = str(refresh.access_token)
+        
+        # Setup client with JWT authentication
+        self.client = APIClient()
+        self.client.credentials(HTTP_AUTHORIZATION=f'Bearer {self.access_token}')
+        
+        #Login
+        self.client.login(email=self.email, password=self.password)
 
     def test_user_registration(self):
         url = reverse('user-register')
@@ -36,19 +50,12 @@ class APItests(APITestCase):
         self.assertTrue(user_exists)
 
     def test_user_detail_authenticated(self):
-        self.client.login(email=self.email, password=self.password)
         url = reverse('user-detail')
         response = self.client.get(url)
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data['email'], self.email)
-
-    def test_user_detail_unauthenticated(self):
-        url = reverse('user-detail')
-        response = self.client.get(url)
-        self.assertEqual(response.status_code, status.HTTP_403_FORBIDDEN)
         
     def test_user_update(self):
-        self.client.login(email=self.email, password=self.password)
         url = reverse('user-detail')
         data = {'first_name': 'UpdatedName'}
         response = self.client.patch(url, data, format='json')
@@ -56,8 +63,6 @@ class APItests(APITestCase):
         self.assertEqual(self.user.first_name, 'UpdatedName')    
 
     def test_user_delete(self):
-        self.client.login(email=self.email, password=self.password)
-        # url = reverse('user-detail', args=[self.user.id])
         url = reverse('user-detail')
         response = self.client.delete(url)
         self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)

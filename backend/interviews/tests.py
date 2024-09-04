@@ -1,5 +1,6 @@
 from rest_framework import status
-from rest_framework.test import APITestCase
+from rest_framework.test import APITestCase, APIClient
+from rest_framework_simplejwt.tokens import RefreshToken
 from jobs.models import Job
 from users.models import CustomerUser
 from .models import Interview
@@ -13,6 +14,7 @@ load_dotenv(dotenv_path=dotenv_path)
 
 class APItests(APITestCase):
     def setUp(self):
+        #create user
         self.email = os.getenv('TEST_USER_EMAIL')
         self.password = os.getenv('TEST_USER_PASSWORD')
         self.user = CustomerUser.objects.create_user(
@@ -21,8 +23,19 @@ class APItests(APITestCase):
             first_name='Test',
             last_name='User'
         )
+
+         # Get JWT tokens
+        refresh = RefreshToken.for_user(self.user)
+        self.access_token = str(refresh.access_token)
+        
+        # Setup client with JWT authentication
+        self.client = APIClient()
+        self.client.credentials(HTTP_AUTHORIZATION=f'Bearer {self.access_token}')
+
+        #login
         self.client.login(email=self.email, password=self.password)
 
+        #create job
         self.job = Job.objects.create(
             user=self.user,
             title="Test Job",
@@ -35,7 +48,7 @@ class APItests(APITestCase):
             status="Interviewing",
             notes="Had a positive screening call."
         )
-
+        #create interview
         self.interview = Interview.objects.create(
             user=self.user,
             job=self.job,
