@@ -40,7 +40,6 @@ class APItests(APITestCase):
         data = {
             'email': 'newuser@example.com',
             'password': 'testpassword123',
-            'password2': 'testpassword123',
             'first_name': 'New',
             'last_name': 'User'
         }

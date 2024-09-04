@@ -1,16 +1,33 @@
 .button {
   padding: 10px 20px 12px;
-  background-color: #000;
-  color: #fff;
+  background-color: #9d34da;
+  color: #fbf4ff;
   border-radius: 8px;
   cursor: pointer;
   border: none;
 }
 
-.button:hover {
+/* .button {
+  padding: 10px 20px 12px;
+  background-color: #000;
+  color: #fff;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+} */
+
+/* .button:hover {
   background-color: rgba(0, 0, 0, 0.8);
+} */
+
+.button:hover {
+  background-color: #9d34dacc;
 }
 
-.button:active {
+/* .button:active {
   background-color: #000;
+} */
+
+.button:active {
+  background-color: #9d34da;
 }
