@@ -1,11 +1,12 @@
 .sidebar {
   width: 220px;
   background-color: #fff;
-  height: calc(100% - 80px);
+  height: calc(100vh - 80px);
   padding: 40px 30px;
   display: flex;
   flex-direction: column;
   gap: 25px;
+  position: relative;
 }
 
 .logo {
@@ -15,6 +16,15 @@
 }
 
 .elements {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.bottom {
+  position: absolute;
+  bottom: 40px;
+  width: 193px;
   display: flex;
   flex-direction: column;
   gap: 20px;
