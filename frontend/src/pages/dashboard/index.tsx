@@ -4,6 +4,7 @@ import { useAuthenticated } from '../../hooks/useAuthenticated';
 import { Navigate } from 'react-router-dom';
 import Sidebar from './components/sidebar';
 import { useState } from 'react';
+import DashboardNav from './components/dashboardNav';
 
 const Dashboard: React.FC = () => {
   const isAuthenticated = useAuthenticated();
@@ -15,6 +16,9 @@ const Dashboard: React.FC = () => {
   return (
     <div className={styles.dashboard}>
       <Sidebar setActivePage={setActivePage} activePage={activePage} />
+      <div className={styles.right}>
+        <DashboardNav />
+      </div>
     </div>
   );
 };
