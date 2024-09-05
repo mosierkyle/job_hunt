@@ -4,6 +4,16 @@
   display: flex;
   justify-content: center;
   align-content: center;
+  position: relative;
+}
+
+.logo {
+  position: absolute;
+  left: 5%;
+  top: 5%;
+  font-size: 30px;
+  font-weight: 600;
+  cursor: pointer;
 }
 .formContainer {
   display: flex;

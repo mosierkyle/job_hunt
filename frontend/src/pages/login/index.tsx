@@ -31,6 +31,9 @@ const Login: React.FC = () => {
 
   return (
     <div className={styles.formPage}>
+      <div onClick={() => handleNavigate('/')} className={styles.logo}>
+        JobHunt
+      </div>
       <div className={styles.formContainer}>
         <div className={styles.formHeading}>
           <h2 className={styles.formTitle}>Welcome Back</h2>
