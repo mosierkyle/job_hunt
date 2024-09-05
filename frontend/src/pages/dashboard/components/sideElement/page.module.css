@@ -1,0 +1,25 @@
+.sidebarElement {
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+  gap: 12px;
+  border-radius: 8px;
+  padding: 10px 20px;
+}
+
+.sidebarElement:hover {
+  background-color: #f7f6f3;
+  cursor: pointer;
+}
+
+.title {
+  font-size: 18px;
+  color: rgba(0, 0, 0);
+  font-weight: 400;
+}
+
+.icon {
+  color: rgba(0, 0, 0);
+  transform: scale(1.2);
+}
