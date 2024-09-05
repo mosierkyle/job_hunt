@@ -4,6 +4,16 @@
   display: flex;
   justify-content: center;
   align-content: center;
+  position: relative;
+}
+
+.logo {
+  position: absolute;
+  left: 5%;
+  top: 5%;
+  font-size: 30px;
+  font-weight: 600;
+  cursor: pointer;
 }
 .formContainer {
   display: flex;
@@ -58,6 +68,7 @@
   padding: 12px;
   border-radius: 8px;
   border: 1px solid rgba(0, 0, 0, 0.3);
+  width: calc(100% - 24px);
 }
 .input::placeholder {
   color: rgb(133, 133, 133);
@@ -77,6 +88,20 @@
 
 .input:hover {
   box-shadow: 0 0 0 3px #9d34da3e;
+}
+
+.passwordWrapper {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.icon {
+  position: absolute;
+  right: 12px;
+  top: 30%;
+  cursor: pointer;
 }
 
 .error {
