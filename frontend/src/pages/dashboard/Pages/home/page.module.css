@@ -1,0 +1,18 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  padding: 40px;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.header {
+  position: absolute;
+  margin: 0;
+  font-size: 24px;
+  left: 40px;
+  top: 40px;
+  font-weight: 600;
+}

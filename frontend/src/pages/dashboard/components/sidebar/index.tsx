@@ -1,11 +1,15 @@
 import React from 'react';
 import styles from './page.module.css';
-import { MdOutlineWorkOutline } from 'react-icons/md';
 import { GoHome } from 'react-icons/go';
-import { MdOutlineChat } from 'react-icons/md';
-import { MdOutlinePeopleAlt } from 'react-icons/md';
 import SidebarElement from '../sideElement';
 import { IconType } from 'react-icons';
+import {
+  MdLogout,
+  MdOutlineSettings,
+  MdOutlineChat,
+  MdOutlinePeopleAlt,
+  MdOutlineWorkOutline,
+} from 'react-icons/md';
 
 interface Element {
   name: string;
@@ -24,12 +28,29 @@ const Sidebar: React.FC<SidebarProps> = ({ setActivePage, activePage }) => {
     { name: 'Interviews', icon: MdOutlineChat },
     { name: 'Connections', icon: MdOutlinePeopleAlt },
   ];
+  const bottomElements: Element[] = [
+    { name: 'Settings', icon: MdOutlineSettings },
+    { name: 'SignOut', icon: MdLogout }, // Pass the icon component itself
+  ];
 
   return (
     <div className={styles.sidebar}>
       <div className={styles.logo}>JobHunt</div>
       <section className={styles.elements}>
         {elements.map((element) => {
+          return (
+            <SidebarElement
+              key={element.name}
+              Icon={element.icon}
+              title={element.name}
+              setActivePage={setActivePage}
+              activePage={activePage}
+            />
+          );
+        })}
+      </section>
+      <section className={styles.bottom}>
+        {bottomElements.map((element) => {
           return (
             <SidebarElement
               key={element.name}

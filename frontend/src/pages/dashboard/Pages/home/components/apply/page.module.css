@@ -1,0 +1,15 @@
+.apply {
+  height: 350px;
+  width: 450px;
+  border-radius: 10px;
+  background-color: #fff;
+  display: flex;
+  /* align-items: center; */
+  justify-content: center;
+}
+
+.header {
+  font-size: 18px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.8);
+}
