@@ -13,7 +13,7 @@ import {
 
 interface Element {
   name: string;
-  icon: IconType; // Keep this as IconType (the icon component type)
+  icon: IconType;
 }
 
 interface SidebarProps {
@@ -23,14 +23,14 @@ interface SidebarProps {
 
 const Sidebar: React.FC<SidebarProps> = ({ setActivePage, activePage }) => {
   const elements: Element[] = [
-    { name: 'Home', icon: GoHome }, // Pass the icon component itself
+    { name: 'Home', icon: GoHome },
     { name: 'Jobs', icon: MdOutlineWorkOutline },
     { name: 'Interviews', icon: MdOutlineChat },
     { name: 'Connections', icon: MdOutlinePeopleAlt },
   ];
   const bottomElements: Element[] = [
     { name: 'Settings', icon: MdOutlineSettings },
-    { name: 'SignOut', icon: MdLogout }, // Pass the icon component itself
+    { name: 'SignOut', icon: MdLogout },
   ];
 
   return (

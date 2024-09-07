@@ -10,6 +10,7 @@ import Jobs from './Pages/jobs';
 import Interviews from './Pages/interviews';
 import Connections from './Pages/connections';
 import Settings from './Pages/settings';
+import User from './Pages/user';
 
 const Dashboard: React.FC = () => {
   const isAuthenticated = useAuthenticated();
@@ -24,6 +25,7 @@ const Dashboard: React.FC = () => {
     Interviews,
     Connections,
     Settings,
+    User,
   };
 
   const ActiveComponent = pageComponents[activePage] || Home;
@@ -32,7 +34,7 @@ const Dashboard: React.FC = () => {
     <div className={styles.dashboard}>
       <Sidebar setActivePage={setActivePage} activePage={activePage} />
       <div className={styles.right}>
-        <DashboardNav />
+        <DashboardNav setActivePage={setActivePage} />
         <div className={styles.content}>
           <ActiveComponent />
         </div>
