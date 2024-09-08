@@ -1,15 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useCallback, useEffect } from 'react';
-import { Connection, ConnectionsState, SortOption } from '../types/global';
+import { Connection, SortOption } from '../types/global';
 import instance from '../utils/tokens';
 
 const useConnections = () => {
-  const [state, setState] = useState<ConnectionsState>({
-    connections: [],
-    totalCount: 0,
-    currentPage: 1,
-    pageSize: 10,
-  });
+  const [connections, setConnections] = useState<Connection[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [sortOption, setSortOption] = useState<SortOption>({ field: 'name', direction: 'asc' });
@@ -18,27 +13,20 @@ const useConnections = () => {
   const fetchConnections = useCallback(async () => {
     try {
       setLoading(true);
-      const { currentPage, pageSize } = state;
       const response = await instance.get('/connections/', {
         params: {
-          page: currentPage,
-          page_size: pageSize,
           ordering: `${sortOption.direction === 'desc' ? '-' : ''}${sortOption.field}`,
           ...filterOption,
         },
       });
-      setState((prevState) => ({
-        ...prevState,
-        connections: response.data.results,
-        totalCount: response.data.count,
-      }));
+      setConnections(response.data);
       setError(null);
     } catch (err) {
       setError('Failed to fetch connections');
     } finally {
       setLoading(false);
     }
-  }, [state.currentPage, state.pageSize, sortOption, filterOption]);
+  }, [sortOption, filterOption]);
 
   useEffect(() => {
     fetchConnections();
@@ -47,11 +35,7 @@ const useConnections = () => {
   const createConnection = async (connectionData: Omit<Connection, 'id' | 'user'>) => {
     try {
       const response = await instance.post('/connections/', connectionData);
-      setState((prevState) => ({
-        ...prevState,
-        connections: [...prevState.connections, response.data],
-        totalCount: prevState.totalCount + 1,
-      }));
+      setConnections((prevConnections) => [...prevConnections, response.data]);
       return response.data;
     } catch (err) {
       setError('Failed to create connection');
@@ -62,12 +46,9 @@ const useConnections = () => {
   const updateConnection = async (connectionId: number, connectionData: Partial<Connection>) => {
     try {
       const response = await instance.patch(`/connections/${connectionId}/`, connectionData);
-      setState((prevState) => ({
-        ...prevState,
-        connections: prevState.connections.map((conn) =>
-          conn.id === connectionId ? response.data : conn,
-        ),
-      }));
+      setConnections((prevConnections) =>
+        prevConnections.map((conn) => (conn.id === connectionId ? response.data : conn)),
+      );
       return response.data;
     } catch (err) {
       setError('Failed to update connection');
@@ -78,11 +59,9 @@ const useConnections = () => {
   const deleteConnection = async (connectionId: number) => {
     try {
       await instance.delete(`/connections/${connectionId}/`);
-      setState((prevState) => ({
-        ...prevState,
-        connections: prevState.connections.filter((conn) => conn.id !== connectionId),
-        totalCount: prevState.totalCount - 1,
-      }));
+      setConnections((prevConnections) =>
+        prevConnections.filter((conn) => conn.id !== connectionId),
+      );
     } catch (err) {
       setError('Failed to delete connection');
       throw err;
@@ -98,15 +77,10 @@ const useConnections = () => {
 
   const setFilter = (filter: Partial<Connection>) => {
     setFilterOption(filter);
-    setState((prevState) => ({ ...prevState, currentPage: 1 }));
-  };
-
-  const setPage = (page: number) => {
-    setState((prevState) => ({ ...prevState, currentPage: page }));
   };
 
   return {
-    ...state,
+    connections,
     loading,
     error,
     createConnection,
@@ -114,7 +88,6 @@ const useConnections = () => {
     deleteConnection,
     setSort,
     setFilter,
-    setPage,
   };
 };
 

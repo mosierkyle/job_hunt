@@ -47,12 +47,12 @@ export interface Connection {
   notes: string;
 }
 
-export interface ConnectionsState {
-  connections: Connection[];
-  totalCount: number;
-  currentPage: number;
-  pageSize: number;
-}
+// export interface ConnectionsState {
+//   connections: Connection[];
+//   totalCount: number;
+//   currentPage: number;
+//   pageSize: number;
+// }
 
 export interface SortOption {
   field: keyof Connection;
