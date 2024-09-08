@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'users',
     'jobs',
     'interviews',
+    'connections',
     'corsheaders',
     'rest_framework',
     'rest_framework_simplejwt',

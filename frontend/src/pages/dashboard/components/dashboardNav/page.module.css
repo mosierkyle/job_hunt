@@ -35,6 +35,11 @@
   border: 1px solid rgba(0, 0, 0, 0.05);
 }
 
+.noticationDiv:hover {
+  background-color: #f7f6f3;
+  cursor: pointer;
+}
+
 .icon {
   color: rgb(133, 133, 133);
   transform: scale(1.5);

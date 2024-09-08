@@ -3,9 +3,10 @@ import React from 'react';
 interface UserAvatarProps {
   firstName: string;
   lastName: string;
+  setActivePage: (page: string) => void;
 }
 
-const UserAvatar: React.FC<UserAvatarProps> = ({ firstName, lastName }) => {
+const UserAvatar: React.FC<UserAvatarProps> = ({ firstName, lastName, setActivePage }) => {
   const initials = `${firstName[0]}${lastName[0]}`;
 
   const avatarStyle: React.CSSProperties = {
@@ -19,9 +20,14 @@ const UserAvatar: React.FC<UserAvatarProps> = ({ firstName, lastName }) => {
     alignItems: 'center',
     fontSize: '20px',
     fontWeight: '400',
+    cursor: 'pointer',
   };
 
-  return <div style={avatarStyle}>{initials}</div>;
+  return (
+    <div onClick={() => setActivePage('User')} style={avatarStyle}>
+      {initials}
+    </div>
+  );
 };
 
 export default UserAvatar;

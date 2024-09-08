@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Authentication from './auth';
+import { User } from '../types/global';
 
 export interface FormErrors {
   [key: string]: string;
@@ -42,7 +43,9 @@ export const useFormValidation = (initialState: { [key: string]: string }) => {
   return { values, errors, handleChange, validateForm, setErrors };
 };
 
+// Auth Hook
 export const useAuth = () => {
+  const [user, setUser] = useState<User | null>(Authentication.getCurrentUser());
   const navigate = useNavigate();
 
   const handleLogin = async (
@@ -51,12 +54,19 @@ export const useAuth = () => {
     setErrors: (errors: FormErrors) => void,
   ) => {
     try {
-      await Authentication.login(email, password);
+      const data = await Authentication.login(email, password);
+      setUser(data);
       navigate('/dashboard');
     } catch (error) {
       console.error('Login error', error);
       setErrors({ form: 'Invalid email or password' });
     }
+  };
+
+  const handleLogout = () => {
+    Authentication.logout();
+    setUser(null);
+    navigate('/login');
   };
 
   const handleRegister = async (
@@ -75,5 +85,5 @@ export const useAuth = () => {
     }
   };
 
-  return { handleLogin, handleRegister };
+  return { user, handleLogin, handleLogout, handleRegister };
 };

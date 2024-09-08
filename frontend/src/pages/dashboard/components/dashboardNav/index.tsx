@@ -4,7 +4,11 @@ import SearchBar from '../searchBar';
 import UserAvatar from '../userAvatar';
 import { MdNotificationsNone } from 'react-icons/md';
 
-const DashboardNav: React.FC = () => {
+interface DashboardNavProps {
+  setActivePage: (page: string) => void;
+}
+
+const DashboardNav: React.FC<DashboardNavProps> = ({ setActivePage }) => {
   return (
     <div className={styles.navbar}>
       <div className={styles.text}>Welcome back {`Kyle`}</div>
@@ -15,7 +19,7 @@ const DashboardNav: React.FC = () => {
         <div className={styles.noticationDiv}>
           <MdNotificationsNone className={styles.icon} />
         </div>
-        <UserAvatar firstName="Kyle" lastName="Mosier" />
+        <UserAvatar setActivePage={setActivePage} firstName="Kyle" lastName="Mosier" />
       </div>
     </div>
   );
