@@ -41,7 +41,7 @@ class JobDetail(APIView):
         try:
             return Job.objects.get(pk=pk)
         except Job.DoesNotExist:
-            return Http404
+            raise Http404
     
     def get(self, request, pk):
         job = self.get_job_object(pk)

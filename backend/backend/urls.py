@@ -8,6 +8,7 @@ from django.urls import path, include
 from interviews.views import InterviewList, InterviewDetail
 from jobs.views import JobDetail, JobList
 from users.views import CustomUserRegister, CustomUserDetail
+from connections.views import ConnectionDetail, ConnectionList
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -20,6 +21,9 @@ urlpatterns = [
     #user
     path('api/register/',CustomUserRegister.as_view(), name='user-register'),
     path('api/user/',CustomUserDetail.as_view(), name='user-detail'),
+    #Connection
+    path('api/connections/',ConnectionList.as_view(), name='connection-list'),
+    path('api/connections/<int:pk>/',ConnectionDetail.as_view(), name='connection-detail'),
     #Authentication
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
