@@ -1,0 +1,221 @@
+.connections {
+  padding: 30px 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow: scroll;
+  height: fit-content;
+}
+
+.h1 {
+  margin: 0;
+  /* text-align: center; */
+  margin-bottom: 10px;
+}
+
+.sub {
+  margin: 0;
+  margin-left: 3px;
+  color: rgba(0, 0, 0, 0.8);
+}
+
+.edit {
+  display: flex;
+  justify-content: end;
+  gap: 10px;
+}
+
+.addConnection {
+  border: none;
+  border-radius: 8px;
+  padding: 10px 20px;
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  position: relative;
+  padding-left: 34px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.addConnection2 {
+  border: none;
+  border-radius: 8px;
+  padding: 12px 20px;
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+  font-size: 16px;
+  /* position: relative; */
+}
+
+.buttonIcon {
+  transform: scale(1.2);
+  position: absolute;
+  left: 13px;
+  bottom: 14px;
+}
+
+.addConnection:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.searchWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05); */
+}
+
+.searchIcon {
+  position: absolute;
+  left: 13px;
+  bottom: 13px;
+  font-size: 1.2rem;
+  color: #858585;
+}
+
+.searchBar {
+  border: none;
+  border-radius: 8px;
+  padding: 12px 20px;
+  background-color: #fff;
+  color: rgb(133, 133, 133);
+  cursor: pointer;
+  font-size: 16px;
+  /* border: 3px solid rgb(245, 245, 245); */
+  padding-left: 40px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.sortWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.sortIcon {
+  position: absolute;
+  left: 14px;
+  bottom: 13px;
+  font-size: 1.2rem;
+  color: #858585;
+  transform: scale(1.2);
+}
+
+.sortDropdown {
+  border: none;
+  border-radius: 8px;
+  padding: 12px 20px;
+  background-color: #fff;
+  color: rgb(133, 133, 133);
+  cursor: pointer;
+  font-size: 16px;
+  /* border: 3px solid rgb(245, 245, 245); */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
+  padding-left: 35px;
+}
+
+.filterButton {
+  border: none;
+  border-radius: 8px;
+  padding: 12px 20px;
+  background-color: #fff;
+  color: rgb(133, 133, 133);
+  cursor: pointer;
+  font-size: 16px;
+  /* border: 3px solid rgb(245, 245, 245); */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.05);
+  /* margin-right: 5px; */
+  position: relative;
+  padding-left: 35px;
+}
+
+.buttonIconFilter {
+  /* margin-right: 7px; */
+  transform: scale(1.2);
+  position: absolute;
+  left: 13px;
+}
+
+/* .filterButton:hover,
+.sortDropdown:hover {
+  background-color: rgb(245, 245, 245);
+} */
+
+.tableDiv {
+  height: fit-content;
+  background-color: #fff;
+  border-radius: 8px;
+  z-index: 1;
+  width: 100%;
+  /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.075);
+  display: flex;
+  overflow: scroll;
+}
+
+.table {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  height: fit-content;
+  border-radius: 8px;
+  z-index: 10;
+  border-collapse: collapse;
+  overflow: hidden;
+}
+
+.header {
+  text-align: left;
+  padding: 10px;
+  gap: 4px;
+  position: relative;
+}
+
+.icon {
+  color: rgb(133, 133, 133);
+  transform: scale(1.2);
+  position: absolute;
+  bottom: 30%;
+  left: 13px;
+}
+
+.th {
+  text-align: left;
+  color: rgb(133, 133, 133);
+  font-weight: 400;
+  font-size: 16px;
+  padding-left: 25px;
+}
+
+.header:hover {
+  /* background-color: rgb(245, 245, 245); */
+  cursor: pointer;
+}
+
+.row {
+  font-weight: normal;
+  color: rgba(0, 0, 0, 0.9);
+  font-size: 15px;
+}
+
+.elementRight {
+  vertical-align: middle;
+  padding: 8px 10px;
+  border-bottom: 3px solid rgb(245, 245, 245);
+  border-top: 3px solid rgb(245, 245, 245);
+}
+
+.elementLeft {
+  vertical-align: middle;
+  padding: 8px 10px;
+  border-top: 3px solid rgb(245, 245, 245);
+  border-bottom: 3px solid rgb(245, 245, 245);
+}
+
+.element {
+  vertical-align: middle;
+  padding: 8px 10px;
+  border: 3px solid rgb(245, 245, 245);
+}

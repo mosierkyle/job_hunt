@@ -1,13 +1,13 @@
 .search {
   display: flex;
   flex-direction: row;
-  width: 500px;
+  width: 40vw;
   position: relative;
 }
 
 .input {
   background-color: #f7f6f3;
-  background-color: rgb(249, 249, 249);
+  /* background-color: rgb(245, 245, 245); */
   color: rgba(0, 0, 0, 0.9);
   border: none;
   border-radius: 8px;

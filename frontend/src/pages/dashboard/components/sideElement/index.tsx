@@ -20,7 +20,11 @@ const SidebarElement: React.FC<SidebarElementProps> = ({
   };
 
   return (
-    <div className={styles.sidebarElement} onClick={handleClick}>
+    <div
+      style={activePage === title ? { backgroundColor: '#f7f6f3' } : { fontWeight: '600' }}
+      className={styles.sidebarElement}
+      onClick={handleClick}
+    >
       <Icon className={styles.icon} />
       <span className={styles.title}>{title}</span>
     </div>

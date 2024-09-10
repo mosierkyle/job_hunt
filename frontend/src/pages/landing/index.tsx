@@ -7,7 +7,7 @@ import Blog from './components/blog';
 import Support from './components/support';
 import { Element } from 'react-scroll';
 import { ActiveSection } from '../../types/global';
-import { scrollToSection } from '../../utils/scrolling';
+import { scrollToSection } from './utils';
 import Footer from './components/footer';
 
 const Landing: React.FC = () => {

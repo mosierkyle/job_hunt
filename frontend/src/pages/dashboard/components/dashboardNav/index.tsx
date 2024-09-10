@@ -11,7 +11,7 @@ interface DashboardNavProps {
 const DashboardNav: React.FC<DashboardNavProps> = ({ setActivePage }) => {
   return (
     <div className={styles.navbar}>
-      <div className={styles.text}>Welcome back {`Kyle`}</div>
+      {/* <div className={styles.text}>Hello, {`Kyle`}</div> */}
       <div className={styles.search}>
         <SearchBar placeholder="Search..." />
       </div>
