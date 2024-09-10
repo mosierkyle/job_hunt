@@ -1,5 +1,5 @@
 import { scroller } from 'react-scroll';
-import { ActiveSection } from '../types/global';
+import { ActiveSection } from '../../types/global';
 
 export const scrollToSection = (section: ActiveSection) => {
   scroller.scrollTo(section, {
