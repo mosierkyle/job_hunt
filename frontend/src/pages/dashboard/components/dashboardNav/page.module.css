@@ -1,6 +1,21 @@
 .navbar {
   height: 50px;
-  width: calc(100% - 50px);
+  width: calc(100% - 304px);
+  background-color: #fff;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 10px 25px;
+  align-items: center;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  position: absolute;
+  top: 0;
+  z-index: 10;
+}
+
+.biggerNavbar {
+  height: 50px;
+  width: calc(100% - 148px);
   background-color: #fff;
   display: flex;
   flex-direction: row;

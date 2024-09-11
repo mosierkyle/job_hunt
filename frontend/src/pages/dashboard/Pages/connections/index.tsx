@@ -6,13 +6,14 @@ import { Connection } from '../../../../types/global';
 import AddConnection from '../../components/addConneciton';
 import { useConnectionUpdater, TableHeader, ConnectionRow } from './utils';
 import {
-  MdOutlinePersonOutline,
+  // MdOutlinePersonOutline,
   MdOutlineLocalPostOffice,
   MdDomain,
   MdOutlineQuestionAnswer,
   MdOutlineSync,
   MdOutlineEditNote,
   MdOutlineAdd,
+  MdOutlineAccountCircle,
   MdOutlineFilterList,
   // MdOutlineSort,
   MdImportExport,
@@ -133,7 +134,7 @@ const Connections: React.FC = () => {
           <thead>
             <tr className={styles.headers}>
               <th className={styles.header}>
-                <MdOutlinePersonOutline className={styles.icon} />
+                <MdOutlineAccountCircle className={styles.icon} />
                 <TableHeader field="name" label="Name" onSort={handleSort} />
               </th>
               <th className={styles.header}>

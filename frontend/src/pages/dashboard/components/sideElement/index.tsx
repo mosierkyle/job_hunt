@@ -3,6 +3,7 @@ import { IconType } from 'react-icons';
 import styles from './page.module.css';
 
 interface SidebarElementProps {
+  showSideBar: boolean;
   Icon: IconType;
   title: string;
   setActivePage: (page: string) => void;
@@ -10,6 +11,7 @@ interface SidebarElementProps {
 }
 
 const SidebarElement: React.FC<SidebarElementProps> = ({
+  showSideBar,
   Icon,
   title,
   setActivePage,
@@ -26,7 +28,7 @@ const SidebarElement: React.FC<SidebarElementProps> = ({
       onClick={handleClick}
     >
       <Icon className={styles.icon} />
-      <span className={styles.title}>{title}</span>
+      <span className={showSideBar ? styles.title : styles.noTitle}>{title}</span>
     </div>
   );
 };

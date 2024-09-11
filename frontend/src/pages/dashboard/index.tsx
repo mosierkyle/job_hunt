@@ -15,6 +15,7 @@ import User from './Pages/user';
 const Dashboard: React.FC = () => {
   const isAuthenticated = useAuthenticated();
   const [activePage, setActivePage] = useState<string>('Home');
+  const [showSideBar, setShowSideBar] = useState<boolean>(true);
 
   if (isAuthenticated === 'loading') return <div>Loading...</div>;
   if (isAuthenticated === false) return <Navigate to="/login" />;
@@ -32,9 +33,14 @@ const Dashboard: React.FC = () => {
 
   return (
     <div className={styles.dashboard}>
-      <Sidebar setActivePage={setActivePage} activePage={activePage} />
+      <Sidebar
+        setShowSideBar={setShowSideBar}
+        showSideBar={showSideBar}
+        setActivePage={setActivePage}
+        activePage={activePage}
+      />
       <div className={styles.right}>
-        <DashboardNav setActivePage={setActivePage} />
+        <DashboardNav showSideBar={showSideBar} setActivePage={setActivePage} />
         <div className={styles.content}>
           <ActiveComponent />
         </div>

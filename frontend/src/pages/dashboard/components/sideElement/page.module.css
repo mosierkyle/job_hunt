@@ -23,3 +23,10 @@
   color: rgba(0, 0, 0);
   transform: scale(1.2);
 }
+
+.noTitle {
+  display: none;
+}
+
+/* .iconSideBar {
+} */

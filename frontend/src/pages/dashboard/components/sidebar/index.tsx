@@ -9,7 +9,9 @@ import {
   MdOutlineChat,
   MdOutlinePeopleAlt,
   MdOutlineWorkOutline,
+  MdOutlineViewSidebar,
 } from 'react-icons/md';
+import { useState } from 'react';
 
 interface Element {
   name: string;
@@ -19,9 +21,17 @@ interface Element {
 interface SidebarProps {
   setActivePage: (page: string) => void;
   activePage: string;
+  showSideBar: boolean;
+  setShowSideBar: (show: boolean) => void;
 }
 
-const Sidebar: React.FC<SidebarProps> = ({ setActivePage, activePage }) => {
+const Sidebar: React.FC<SidebarProps> = ({
+  setActivePage,
+  activePage,
+  setShowSideBar,
+  showSideBar,
+}) => {
+  // const [showSideBar, setShowSideBar] = useState<boolean>(true);
   const elements: Element[] = [
     { name: 'Home', icon: GoHome },
     { name: 'Jobs', icon: MdOutlineWorkOutline },
@@ -33,13 +43,25 @@ const Sidebar: React.FC<SidebarProps> = ({ setActivePage, activePage }) => {
     { name: 'SignOut', icon: MdLogout },
   ];
 
+  const handleSideBar = () => {
+    console.log(!showSideBar);
+    setShowSideBar(!showSideBar);
+  };
+
   return (
-    <div className={styles.sidebar}>
-      <div className={styles.logo}>JobHunt</div>
+    <div className={showSideBar ? styles.sidebar : styles.hideSideBar}>
+      <div className={styles.logo}>
+        <p className={showSideBar ? styles.logoText : styles.noLogo}>JobHunt</p>
+        <MdOutlineViewSidebar
+          onClick={() => handleSideBar()}
+          className={showSideBar ? styles.icon : styles.iconOnly}
+        />
+      </div>
       <section className={styles.elements}>
         {elements.map((element) => {
           return (
             <SidebarElement
+              showSideBar={showSideBar}
               key={element.name}
               Icon={element.icon}
               title={element.name}
@@ -49,10 +71,11 @@ const Sidebar: React.FC<SidebarProps> = ({ setActivePage, activePage }) => {
           );
         })}
       </section>
-      <section className={styles.bottom}>
+      <section className={showSideBar ? styles.bottom : styles.bottomSidebar}>
         {bottomElements.map((element) => {
           return (
             <SidebarElement
+              showSideBar={showSideBar}
               key={element.name}
               Icon={element.icon}
               title={element.name}
